@@ -36,6 +36,7 @@ install_rust_crates() {
 }
 
 depends(){
+  apt update -y; apt upgrade wget -y; apt install wget curl apt fasttrack-archive-keyring
   cp sources.list /etc/apt/sources.list
   apt update -y; apt upgrade wget -y; apt install wget curl apt fasttrack-archive-keyring
   dpkg --add-architecture i386
