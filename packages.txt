@@ -3366,8 +3366,6 @@ vdpau-driver-all
 vdpau-driver-all
 vim-common
 vim-tiny
-virtualbox-7.0
-virtualbox-ext-pack
 vlc-data
 vlc-plugin-base
 vlc-plugin-video-output
