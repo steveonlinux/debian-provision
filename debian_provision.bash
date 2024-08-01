@@ -37,7 +37,7 @@ install_rust_crates() {
 
 depends(){
   cp sources.list /etc/apt/sources.list
-  apt update -y; apt upgrade wget -y; apt install wget curl
+  apt update -y; apt upgrade wget -y; apt install wget curl apt fasttrack-archive-keyring
   dpkg --add-architecture i386
   curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
   echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/mullvad.list
@@ -61,7 +61,7 @@ cp_bashrc(){
 }
 
 install_rust() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   PATH="$HOME/.cargo/bin:$PATH"
 }
 
