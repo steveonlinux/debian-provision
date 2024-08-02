@@ -35,7 +35,7 @@ install_rust_crates() {
 }
 
 depends(){
-  apt update -y; apt upgrade wget -y; apt install wget curl fasttrack-archive-keyring
+  apt update -y; apt upgrade wget -y; apt install wget curl gnupg lsb-release apt-transport-https ca-certificates fasttrack-archive-keyring
   cp sources.list /etc/apt/sources.list
   dpkg --add-architecture i386
   curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
