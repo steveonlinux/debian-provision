@@ -57,7 +57,7 @@ install_rust() {
 
 
 install_neovim() {
-cd /tmp || exit
+cd ~ || exit
 git clone https://github.com/neovim/neovim && cd neovim || exit
 git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -71,13 +71,13 @@ LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.
 }
 
 install_nerdfonts(){
-  cd /tmp || exit
+  cd ~ || exit
   git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
   ./nerd-fonts/install.sh
 }
 
 install_vbox(){
-  cd /tmp || exit
+  cd ~ || exit
   wget 'https://download.virtualbox.org/virtualbox/7.0.20/virtualbox-7.0_7.0.20-163906~Debian~bookworm_amd64.deb'
   dpkg -i  ./*virtualbox*
 }
