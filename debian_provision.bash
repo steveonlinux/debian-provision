@@ -50,7 +50,7 @@ depends(){
 #Architectures: amd64
 #Signed-By: /usr/share/keyrings/librewolf.gpg
 #EOF
-printf %b "Types: deb\nURIs: https://deb.librewolf.net\nSuites: $distro\nComponents: main\nArchitectures: amd64\nSigned-By: /usr/share/keyrings/librewolf.gpg" | tee /etc/apt/sources.list.d/librewolf.sources > /dev/null
+printf %b "Types: deb\nURIs: https://deb.librewolf.net\nSuites: $distro\nComponents: main\nArchitectures: amd64\nSigned-By: /usr/share/keyrings/librewolf.gpg\n" | tee /etc/apt/sources.list.d/librewolf.sources > /dev/null
 
 curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"| tee /etc/apt/sources.list.d/brave-browser-release.list
