@@ -12,7 +12,6 @@ crates=(
     "lsd"
     "git-delta"
     "du-dust"
-    "duf"
     "broot"
     "fd-find"
     "ripgrep"
@@ -41,8 +40,8 @@ depends(){
   dpkg --add-architecture i386
   curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
   echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/mullvad.list
-  #distro=$(if echo " una bookworm vanessa focal jammy bullseye vera uma " | grep -q " $(lsb_release -sc) "; then lsb_release -sc; else echo focal; fi)
-  #wget -O- https://deb.librewolf.net/keyring.gpg | gpg --dearmor -o /usr/share/keyrings/librewolf.gpg
+  distro=$(if echo " una bookworm vanessa focal jammy bullseye vera uma " | grep -q " $(lsb_release -sc) "; then lsb_release -sc; else echo focal; fi)
+  wget -O- https://deb.librewolf.net/keyring.gpg | gpg --dearmor -o /usr/share/keyrings/librewolf.gpg
   #tee /etc/apt/sources.list.d/librewolf.sources << EOF > /dev/null
 #Types: deb
 #URIs: https://deb.librewolf.net
@@ -51,6 +50,8 @@ depends(){
 #Architectures: amd64
 #Signed-By: /usr/share/keyrings/librewolf.gpg
 #EOF
+printf %b "Types: deb\nURIs: https://deb.librewolf.net\nSuites: $distro\nComponents: main\nArchitectures: amd64\nSigned-By: /usr/share/keyrings/librewolf.gpg" | tee /etc/apt/sources.list.d/librewolf.sources > /dev/null
+
 curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"| tee /etc/apt/sources.list.d/brave-browser-release.list
 
